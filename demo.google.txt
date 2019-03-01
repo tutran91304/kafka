@@ -1,0 +1,12 @@
+[PREP]
+curl -XDELETE 'https://elastic:7FPxC9XsiEEotQD7y2JbvvT5@48bc81b663c64e919e8045ccb4bcbd4d.us-west1.gcp.cloud.es.io:9243/utilization'
+(Open another window) sudo /opt/kafka/bin/connect-standalone.sh config/connect-standalone.properties config/elasticsearch-connect.properties
+sudo bin/connect-standalone.sh config/connect-standalone.properties config/elasticsearch-connect.properties
+
+[LOOP]
+cd ~/tu_scripts
+vi create_fake_data.py  (change the start date)
+python2 create_fake_data.py
+/opt/kafka/bin/kafka-console-producer.sh < data.json --broker-list localhost:9092 --topic utilization
+
+

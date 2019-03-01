@@ -1,0 +1,12 @@
+[PREP]
+curl -XDELETE 'https://search-smart-vbwh2ra2j72z3f64p5rbhec6ba.us-east-1.es.amazonaws.com/utilization'
+(Open another window) sudo /opt/kafka/bin/connect-standalone.sh config/connect-standalone.properties config/elasticsearch-connect-aws.properties
+/opt/kafka/bin/connect-standalone.sh config/connect-standalone-aws.properties config/elasticsearch-connect-aws.properties
+
+[LOOP]
+cd ~/tu_scripts
+vi create_fake_data.py  (change the start date)
+python2 create_fake_data.py
+/opt/kafka/bin/kafka-console-producer.sh < data.json --broker-list localhost:9092 --topic utilization
+
+
